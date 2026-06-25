@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nagp-api-service
+  namespace: nagp-assignment
+  labels:
+    app: nagp-api
+    tier: api
+spec:
+  selector:
+    app: nagp-api
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: ClusterIP
