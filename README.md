@@ -239,6 +239,7 @@ Get namespace - `kubectl get namespace nagp-assignment`
 Get Configmaps and secrets - `kubectl get configmap,secret -n $NS`
 Get persistent volume information - `kubectl get pvc,pv -n $NS`
 Get Ingress Information - `kubectl get ingress -n $NS`
+Get all nodes - `kubectl get nodes`
 
 Self healing and DB updates
 INSERT DATA IN DB - `kubectl exec -n $NS deployment/postgres -- psql -U nagpuser -d nagpdb -c \
