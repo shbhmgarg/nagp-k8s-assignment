@@ -11,7 +11,7 @@ A multi-tier Kubernetes application demonstrating containerization, orchestratio
 | **Source Code Repository** | https://github.com/shbhmgarg/nagp-k8s-assignment |
 | **Docker Hub Image** | https://hub.docker.com/r/shbhmgarg/nagp-api |
 | **Live Service API URL** | http://35.190.59.142/employees |
-| **Screen Recording** | <YOUR_LOOM_OR_DRIVE_LINK> |
+| **Screen Recording** | https://nagarro-my.sharepoint.com/:v:/p/shubham_garg08/IQBVl2JMpA0iSYi8F48TmIBsAapKB98h1LUPQNpE_tbrvWU?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=J9Y05q |
 
 ---
 
@@ -232,30 +232,3 @@ This deletes:
 ## Author
 
 Submitted as part of NAGP 2026 Technology Band III — Workshop on Kubernetes, DevOps & FinOps.
-
-## DEMO COMMANDS
-
-Get namespace - `kubectl get namespace nagp-assignment`
-Get Configmaps and secrets - `kubectl get configmap,secret -n nagp-assignment`
-Get persistent volume information - `kubectl get pvc,pv -n nagp-assignment`
-Get Ingress Information - `kubectl get ingress -n nagp-assignment`
-Get all nodes - `kubectl get nodes`
-
-Self healing and DB updates
-INSERT DATA IN DB - `kubectl exec -n nagp-assignment deployment/postgres -- psql -U nagpuser -d nagpdb -c \
-  "INSERT INTO employees (name, department, salary) VALUES ('NEW_MARKER', 'DEMO', 99999);"`
-
-
-Rolling updates - `kubectl get deployment nagp-api -n nagp-assignment`
-Verify strategy - `kubectl get deployment nagp-api -n nagp-assignment -o jsonpath='{.spec.strategy}' | jq`
-Trigger rollout - `kubectl rollout restart deployment/nagp-api -n nagp-assignment`
-
-HPA Status - `kubectl get hpa -n nagp-assignment`
-Metrics - `kubectl describe hpa nagp-api-hpa -n nagp-assignment | grep -A 8 "Metrics:\|Min replicas\|Max replicas"`
-Autoscaling - `gcloud container clusters describe nagp-cluster --zone us-central1-a \
-  --format="value(autoscaling)"`
-
-FINOPS 
-CPU Memory- `kubectl top pods -n nagp-assignment`
-LIMITS/Requests - `kubectl describe deployment nagp-api -n nagp-assignment | grep -A 6 "Limits:\|Requests:"`
-
